@@ -1,0 +1,445 @@
+/**
+ * 威软视频下载站主题 - 视频播放器样式
+ *
+ * @package Weiruan_Video
+ * @since 1.0.0
+ */
+
+/* 播放器容器 */
+.video-player-container {
+    background: #000;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+}
+
+.video-player {
+    position: relative;
+    aspect-ratio: 16/9;
+    background: #000;
+    cursor: pointer;
+}
+
+.video-player.fullscreen {
+    width: 100vw;
+    height: 100vh;
+    aspect-ratio: auto;
+}
+
+.video-player video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* 播放器控制条 */
+.player-controls {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+    padding: 40px 16px 16px;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.video-player:not(:hover):not(.paused) .player-controls {
+    opacity: 0;
+}
+
+.video-player.paused .player-controls {
+    opacity: 1;
+}
+
+/* 进度条 */
+.progress-bar {
+    width: 100%;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2.5px;
+    cursor: pointer;
+    margin-bottom: 12px;
+    position: relative;
+}
+
+.progress-bar:hover {
+    height: 7px;
+}
+
+.progress-bar .progress {
+    height: 100%;
+    background: var(--primary-color);
+    border-radius: inherit;
+    position: relative;
+    transition: width 0.1s linear;
+}
+
+.progress-bar .progress-buffered {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: inherit;
+}
+
+.progress-bar .progress::after {
+    content: '';
+    position: absolute;
+    right: -6px;
+    top: 50%;
+    transform: translateY(-50%) scale(0);
+    width: 14px;
+    height: 14px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+    transition: transform 0.15s ease;
+}
+
+.progress-bar:hover .progress::after {
+    transform: translateY(-50%) scale(1);
+}
+
+/* 控制按钮行 */
+.controls-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.controls-left,
+.controls-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.control-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.control-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--primary-light);
+}
+
+.control-btn svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* 音量滑块 */
+.volume-slider {
+    width: 80px;
+    height: 4px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px;
+    height: 14px;
+    background: white;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.volume-slider::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    background: white;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+}
+
+/* 时间显示 */
+.time-display {
+    color: white;
+    font-size: 13px;
+    font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+    user-select: none;
+}
+
+.time-display span {
+    margin: 0 2px;
+}
+
+/* 质量选择器 */
+.quality-selector {
+    position: relative;
+}
+
+.quality-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.quality-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.quality-menu {
+    position: absolute;
+    bottom: 100%;
+    right: 0;
+    margin-bottom: 8px;
+    background: rgba(0, 0, 0, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 8px;
+    min-width: 120px;
+    display: none;
+    z-index: 100;
+}
+
+.quality-menu.show {
+    display: block;
+}
+
+.quality-menu button {
+    display: block;
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.7);
+    padding: 8px 12px;
+    text-align: left;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: all 0.2s ease;
+}
+
+.quality-menu button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.quality-menu button.active {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* 大播放按钮 */
+.big-play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background: rgba(99, 102, 241, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 30px rgba(99, 102, 241, 0.4);
+}
+
+.big-play-button:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+    background: var(--primary-color);
+}
+
+.big-play-button svg {
+    width: 36px;
+    height: 36px;
+    margin-left: 4px;
+    fill: white;
+}
+
+.video-player.playing .big-play-button {
+    display: none;
+}
+
+/* 加载指示器 */
+.video-loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+.video-loading .loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid rgba(255, 255, 255, 0.2);
+    border-top-color: var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* 视频错误 */
+.video-player-error {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 16/9;
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    color: var(--text-muted);
+    text-align: center;
+    padding: 40px;
+}
+
+/* 缩略图预览 */
+.no-thumbnail {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--bg-card), var(--bg-card-hover));
+    color: var(--text-muted);
+}
+
+/* 播放器控制条隐藏动画 */
+.video-player:not(.paused) .player-controls {
+    transition: opacity 0.3s ease 2s;
+}
+
+.video-player:hover .player-controls {
+    transition: opacity 0.3s ease;
+}
+
+/* 画中画状态 */
+.video-player.pip-active {
+    background: var(--bg-card);
+}
+
+.video-player.pip-active::after {
+    content: '正在画中画模式播放';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    .player-controls {
+        padding: 30px 12px 12px;
+    }
+
+    .controls-row {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .controls-left,
+    .controls-right {
+        gap: 4px;
+    }
+
+    .control-btn {
+        padding: 6px;
+    }
+
+    .control-btn svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .volume-slider {
+        width: 60px;
+    }
+
+    .time-display {
+        font-size: 11px;
+    }
+
+    .big-play-button {
+        width: 60px;
+        height: 60px;
+    }
+
+    .big-play-button svg {
+        width: 28px;
+        height: 28px;
+    }
+
+    .quality-btn {
+        padding: 3px 8px;
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 480px) {
+    .volume-slider {
+        display: none;
+    }
+
+    .pip-btn {
+        display: none;
+    }
+}
+
+/* 全屏模式 */
+.video-player:-webkit-full-screen {
+    width: 100%;
+    height: 100%;
+}
+
+.video-player:-moz-full-screen {
+    width: 100%;
+    height: 100%;
+}
+
+.video-player:fullscreen {
+    width: 100%;
+    height: 100%;
+}
+
+.video-player.fullscreen .player-controls {
+    padding: 60px 30px 20px;
+}
+
+.video-player.fullscreen .control-btn svg {
+    width: 28px;
+    height: 28px;
+}
+
+.video-player.fullscreen .big-play-button {
+    width: 100px;
+    height: 100px;
+}
+
+.video-player.fullscreen .big-play-button svg {
+    width: 44px;
+    height: 44px;
+}

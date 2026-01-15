@@ -1,0 +1,286 @@
+/**
+ * 威软视频下载站主题 - 图标样式
+ *
+ * @package Weiruan_Video
+ * @since 1.0.0
+ */
+
+/* SVG图标基础样式 */
+.icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+    vertical-align: middle;
+}
+
+/* 图标尺寸 */
+.icon-sm {
+    width: 14px;
+    height: 14px;
+}
+
+.icon-md {
+    width: 18px;
+    height: 18px;
+}
+
+.icon-lg {
+    width: 24px;
+    height: 24px;
+}
+
+.icon-xl {
+    width: 32px;
+    height: 32px;
+}
+
+/* 带背景的图标 */
+.icon-box {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    border-radius: var(--radius-md);
+    background: var(--bg-card-hover);
+}
+
+.icon-box.primary {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: white;
+}
+
+.icon-box.success {
+    background: var(--success-color);
+    color: white;
+}
+
+.icon-box.warning {
+    background: var(--warning-color);
+    color: white;
+}
+
+.icon-box.danger {
+    background: var(--accent-color);
+    color: white;
+}
+
+/* 评分星星 */
+.rating-stars {
+    display: inline-flex;
+    gap: 2px;
+}
+
+.star {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.star.full {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23f59e0b'%3E%3Cpath d='M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z'/%3E%3C/svg%3E");
+}
+
+.star.half {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23f59e0b'%3E%3Cpath d='M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4V6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z'/%3E%3C/svg%3E");
+}
+
+.star.empty {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2371717a'%3E%3Cpath d='M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z'/%3E%3C/svg%3E");
+}
+
+.rating-number {
+    margin-left: 8px;
+    font-weight: 600;
+    color: var(--warning-color);
+}
+
+/* 面包屑 */
+.breadcrumbs {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 16px 0;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.breadcrumbs a {
+    color: var(--text-secondary);
+    transition: color 0.2s ease;
+}
+
+.breadcrumbs a:hover {
+    color: var(--primary-light);
+}
+
+.breadcrumb-separator {
+    color: var(--border-color);
+}
+
+.breadcrumbs .current {
+    color: var(--text-primary);
+}
+
+/* 视频分类标签 */
+.video-taxonomies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin: 16px 0;
+    padding: 16px 0;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.video-categories,
+.video-tags {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.taxonomy-label {
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+/* 视频信息列表 */
+.video-info-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+    margin-top: 16px;
+    padding: 16px;
+    background: var(--bg-card-hover);
+    border-radius: var(--radius-md);
+}
+
+.info-item {
+    display: flex;
+    gap: 8px;
+}
+
+.info-item .label {
+    color: var(--text-muted);
+    flex-shrink: 0;
+}
+
+.info-item .value {
+    color: var(--text-primary);
+}
+
+/* 视频评分显示 */
+.video-rating {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+/* 社交分享按钮 */
+.social-share {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.share-label {
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+.share-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--bg-card-hover);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.share-btn:hover {
+    transform: translateY(-3px);
+}
+
+.share-weibo:hover {
+    background: #e6162d;
+    border-color: #e6162d;
+    color: white;
+}
+
+.share-qzone:hover {
+    background: #fece00;
+    border-color: #fece00;
+    color: #333;
+}
+
+.share-wechat:hover {
+    background: #07c160;
+    border-color: #07c160;
+    color: white;
+}
+
+.share-twitter:hover {
+    background: #1da1f2;
+    border-color: #1da1f2;
+    color: white;
+}
+
+.share-facebook:hover {
+    background: #1877f2;
+    border-color: #1877f2;
+    color: white;
+}
+
+/* 动画图标 */
+.icon-spin {
+    animation: icon-spin 1s linear infinite;
+}
+
+@keyframes icon-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.icon-pulse {
+    animation: icon-pulse 1.5s ease infinite;
+}
+
+@keyframes icon-pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* 下载登录提示 */
+.download-login-required {
+    text-align: center;
+    padding: 30px;
+    background: var(--bg-card-hover);
+    border-radius: var(--radius-md);
+}
+
+.download-login-required p {
+    margin-bottom: 16px;
+    color: var(--text-muted);
+}
