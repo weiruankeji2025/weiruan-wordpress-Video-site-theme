@@ -1,0 +1,252 @@
+/**
+ * 威软视频下载站主题 - 后台管理样式
+ *
+ * @package Weiruan_Video
+ * @since 1.0.0
+ */
+
+/* 后台通用样式 */
+.weiruan-admin-header {
+    margin: 20px 0;
+    padding: 20px;
+    background: linear-gradient(135deg, #6366f1, #0ea5e9);
+    border-radius: 8px;
+    color: white;
+}
+
+.weiruan-admin-header h2 {
+    margin: 0;
+    color: white;
+}
+
+.weiruan-admin-header p {
+    margin: 10px 0 0;
+    opacity: 0.9;
+}
+
+/* 视频文件表格 */
+.video-files-table {
+    margin-top: 15px;
+    border-collapse: collapse;
+}
+
+.video-files-table th,
+.video-files-table td {
+    vertical-align: middle;
+    padding: 12px 8px;
+    border-bottom: 1px solid #e2e4e7;
+}
+
+.video-files-table tbody tr:nth-child(odd) {
+    background: #f9f9f9;
+}
+
+.video-files-table tbody tr:hover {
+    background: #f0f0f1;
+}
+
+.video-files-table th {
+    background: #f0f0f1;
+    font-weight: 600;
+    text-align: left;
+}
+
+/* 元数据框样式 */
+.weiruan-video-files-wrapper,
+.weiruan-video-info-wrapper,
+.weiruan-player-settings,
+.weiruan-video-stats {
+    padding: 10px 0;
+}
+
+.weiruan-video-files-wrapper .description,
+.weiruan-video-info-wrapper .description {
+    color: #646970;
+    font-style: italic;
+}
+
+/* 预览视频区域 */
+.weiruan-video-files-wrapper > div[style*="background"] {
+    background: #f0f0f1 !important;
+    border-radius: 4px;
+    padding: 15px;
+}
+
+/* 统计数据表格 */
+.weiruan-video-stats table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.weiruan-video-stats table td {
+    padding: 8px 0;
+    border-bottom: 1px solid #e2e4e7;
+}
+
+.weiruan-video-stats table tr:last-child td {
+    border-bottom: none;
+}
+
+/* 播放器设置 */
+.weiruan-player-settings p {
+    margin-bottom: 12px;
+}
+
+.weiruan-player-settings label {
+    cursor: pointer;
+}
+
+.weiruan-player-settings input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+/* 文件选择按钮 */
+.select-video-file,
+#select-preview-video,
+#select-poster-image {
+    background: #2271b1;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    padding: 4px 10px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.select-video-file:hover,
+#select-preview-video:hover,
+#select-poster-image:hover {
+    background: #135e96;
+}
+
+/* 列表页缩略图 */
+.column-video_thumbnail img {
+    border-radius: 4px;
+    display: block;
+}
+
+/* 设置页面样式 */
+.wrap .nav-tab-wrapper {
+    margin-bottom: 20px;
+}
+
+.wrap .form-table th {
+    width: 200px;
+}
+
+.wrap .form-table td input[type="text"],
+.wrap .form-table td input[type="url"],
+.wrap .form-table td input[type="number"],
+.wrap .form-table td select,
+.wrap .form-table td textarea {
+    width: 100%;
+    max-width: 400px;
+}
+
+.wrap .form-table td textarea {
+    min-height: 100px;
+}
+
+/* 颜色选择器 */
+.wrap .form-table td input[type="color"] {
+    width: 50px;
+    height: 32px;
+    padding: 0;
+    border: 1px solid #8c8f94;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* 警告提示 */
+.weiruan-video-stats .description[style*="color: #d63638"] {
+    background: #fcf0f1;
+    padding: 8px 12px;
+    border-radius: 4px;
+    border-left: 4px solid #d63638;
+    margin-top: 10px;
+}
+
+/* 媒体库按钮 */
+.wp-core-ui .button.select-video-file,
+.wp-core-ui .button#select-preview-video,
+.wp-core-ui .button#select-poster-image {
+    margin-top: 5px;
+}
+
+/* 海报预览 */
+#video_poster + p img {
+    margin-top: 10px;
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+/* 响应式 */
+@media screen and (max-width: 782px) {
+    .video-files-table {
+        display: block;
+        overflow-x: auto;
+    }
+
+    .wrap .form-table th {
+        width: auto;
+    }
+}
+
+/* 分辨率徽章预览 */
+.video-files-table td:first-child strong {
+    display: block;
+    margin-bottom: 4px;
+}
+
+.video-files-table td:first-child small {
+    color: #646970;
+}
+
+/* 帮助文本 */
+.video-files-table + .description,
+.form-table + .description {
+    margin-top: 15px;
+    padding: 10px 15px;
+    background: #f0f6fc;
+    border-left: 4px solid #72aee6;
+    border-radius: 0 4px 4px 0;
+}
+
+/* 视频编辑页列宽 */
+.post-type-video .column-video_thumbnail {
+    width: 100px;
+}
+
+.post-type-video .column-video_duration,
+.post-type-video .column-video_views,
+.post-type-video .column-video_downloads {
+    width: 80px;
+}
+
+/* 快速编辑兼容 */
+.post-type-video .inline-edit-row .input-text-wrap {
+    width: 100%;
+}
+
+/* 仪表盘小工具 */
+.weiruan-video-dashboard-widget {
+    padding: 12px;
+}
+
+.weiruan-video-dashboard-widget .stat-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #e2e4e7;
+}
+
+.weiruan-video-dashboard-widget .stat-item:last-child {
+    border-bottom: none;
+}
+
+.weiruan-video-dashboard-widget .stat-value {
+    font-weight: 600;
+    color: #2271b1;
+}
