@@ -24,6 +24,7 @@
             this.shareButtons();
             this.backToTop();
             this.tooltips();
+            this.visitorStats();
         },
 
         /**
@@ -409,6 +410,73 @@
                     $toast.remove();
                 }, 300);
             }, 3000);
+        },
+
+        /**
+         * 访客统计实时更新
+         */
+        visitorStats: function() {
+            const $onlineCount = $('.visitor-stats-bar .online-count');
+            const $totalCount = $('.visitor-stats-bar .total-count');
+
+            // 如果页面上没有统计栏，则不执行
+            if ($onlineCount.length === 0) {
+                return;
+            }
+
+            // 定时更新在线人数（每30秒更新一次）
+            const updateOnlineCount = function() {
+                $.ajax({
+                    url: weiruanVideo.ajaxUrl,
+                    type: 'POST',
+                    data: {
+                        action: 'weiruan_video_get_online_count',
+                        nonce: weiruanVideo.nonce
+                    },
+                    success: function(response) {
+                        if (response.success) {
+                            // 更新在线人数
+                            if (response.data.online !== undefined) {
+                                const currentOnline = parseInt($onlineCount.text());
+                                const newOnline = response.data.online;
+
+                                // 带动画效果更新数字
+                                if (currentOnline !== newOnline) {
+                                    $onlineCount.addClass('updating');
+                                    setTimeout(function() {
+                                        $onlineCount.text(newOnline);
+                                        $onlineCount.removeClass('updating');
+                                    }, 150);
+                                }
+                            }
+
+                            // 更新总访问量（如果返回了）
+                            if (response.data.total !== undefined && $totalCount.length) {
+                                const currentTotal = parseInt($totalCount.text().replace(/,/g, ''));
+                                const newTotal = response.data.total;
+
+                                if (currentTotal !== newTotal) {
+                                    $totalCount.addClass('updating');
+                                    setTimeout(function() {
+                                        $totalCount.text(newTotal.toLocaleString());
+                                        $totalCount.removeClass('updating');
+                                    }, 150);
+                                }
+                            }
+                        }
+                    }
+                });
+            };
+
+            // 每30秒更新一次
+            setInterval(updateOnlineCount, 30000);
+
+            // 页面可见性API - 当用户切换回页面时立即更新
+            document.addEventListener('visibilitychange', function() {
+                if (!document.hidden) {
+                    updateOnlineCount();
+                }
+            });
         }
     };
 
@@ -591,6 +659,19 @@ const toastStyles = `
         white-space: nowrap;
         z-index: 100;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    /* 访客统计数字更新动画 */
+    .visitor-stats-bar .online-count,
+    .visitor-stats-bar .total-count {
+        transition: transform 0.15s ease, opacity 0.15s ease;
+        display: inline-block;
+    }
+
+    .visitor-stats-bar .online-count.updating,
+    .visitor-stats-bar .total-count.updating {
+        transform: scale(1.2);
+        opacity: 0.7;
     }
 `;
 

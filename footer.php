@@ -12,6 +12,14 @@ if (!defined('ABSPATH')) {
 ?>
     </main><!-- .site-content -->
 
+    <?php
+    // 显示访客统计栏
+    $show_visitor_bar = weiruan_video_get_option('show_visitor_bar', true);
+    if ($show_visitor_bar !== false && $show_visitor_bar !== '0') {
+        weiruan_video_visitor_stats_bar();
+    }
+    ?>
+
     <footer class="site-footer">
         <div class="container">
             <div class="footer-content">

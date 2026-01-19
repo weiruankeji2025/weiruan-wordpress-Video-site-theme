@@ -197,6 +197,7 @@ require_once WEIRUAN_VIDEO_DIR . '/inc/template-tags.php';
 require_once WEIRUAN_VIDEO_DIR . '/inc/ajax-handlers.php';
 require_once WEIRUAN_VIDEO_DIR . '/inc/widgets.php';
 require_once WEIRUAN_VIDEO_DIR . '/inc/shortcodes.php';
+require_once WEIRUAN_VIDEO_DIR . '/inc/visitor-stats.php';
 
 /**
  * 自定义摘要长度
