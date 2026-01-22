@@ -1751,3 +1751,159 @@ button {
         top: 46px;
     }
 }
+
+/* ==========================================================================
+   访客统计栏
+   ========================================================================== */
+.visitor-stats-bar {
+    background: linear-gradient(135deg, var(--bg-card), var(--bg-darker));
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    padding: var(--spacing-md) 0;
+    margin-top: var(--spacing-xl);
+}
+
+.visitor-stats-inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-lg);
+}
+
+.visitor-stats-bar .stat-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-fast);
+}
+
+.visitor-stats-bar .stat-item:hover {
+    background: rgba(255, 255, 255, 0.06);
+    transform: translateY(-2px);
+}
+
+.visitor-stats-bar .stat-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: var(--radius-md);
+    color: white;
+}
+
+.visitor-stats-bar .stat-label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+}
+
+.visitor-stats-bar .stat-value {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.visitor-stats-bar .stat-value.online-count {
+    color: var(--success-color);
+}
+
+.online-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: var(--success-color);
+    border-radius: 50%;
+    animation: pulse-dot 2s infinite;
+}
+
+@keyframes pulse-dot {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.5;
+        transform: scale(1.2);
+    }
+}
+
+.stat-divider {
+    width: 1px;
+    height: 30px;
+    background: var(--border-color);
+}
+
+/* 访客统计栏响应式 */
+@media (max-width: 992px) {
+    .visitor-stats-inner {
+        gap: var(--spacing-md);
+    }
+
+    .visitor-stats-bar .stat-item {
+        padding: var(--spacing-xs) var(--spacing-sm);
+    }
+
+    .visitor-stats-bar .stat-icon {
+        width: 32px;
+        height: 32px;
+    }
+
+    .visitor-stats-bar .stat-icon svg {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .visitor-stats-inner {
+        justify-content: space-around;
+    }
+
+    .stat-divider {
+        display: none;
+    }
+
+    .visitor-stats-bar .stat-item {
+        flex-direction: column;
+        text-align: center;
+        padding: var(--spacing-sm);
+        min-width: 80px;
+    }
+
+    .visitor-stats-bar .stat-label {
+        font-size: 0.75rem;
+    }
+
+    .visitor-stats-bar .stat-value {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .visitor-stats-bar {
+        padding: var(--spacing-sm) 0;
+    }
+
+    .visitor-stats-inner {
+        gap: var(--spacing-xs);
+    }
+
+    .visitor-stats-bar .stat-item {
+        min-width: 70px;
+        padding: var(--spacing-xs);
+    }
+
+    .visitor-stats-bar .stat-icon {
+        width: 28px;
+        height: 28px;
+    }
+}
